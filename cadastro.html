@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar conta — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <p>Criar conta de lojista</p>
+</header>
+
+<hr>
+
+<main>
+  <h2>Abra sua conta em 3 passos</h2>
+  <ol>
+    <li><strong>Seus dados</strong> — quem vai administrar a conta.</li>
+    <li>Dados da empresa — para emissão de notas e repasses.</li>
+    <li>Conta bancária — para onde o dinheiro vai.</li>
+  </ol>
+  <p><progress value="1" max="3">Passo 1 de 3</progress> Passo 1 de 3</p>
+
+  <form action="dashboard.html" method="post">
+
+    <fieldset>
+      <legend>1. Responsável pela conta</legend>
+      <p>
+        <label for="nome">Nome completo:</label><br>
+        <input type="text" id="nome" name="nome" size="40" required>
+      </p>
+      <p>
+        <label for="email">E-mail corporativo:</label><br>
+        <input type="email" id="email" name="email" size="40" placeholder="voce@suaempresa.com.br" required>
+      </p>
+      <p>
+        <label for="telefone">Telefone com DDD:</label><br>
+        <input type="tel" id="telefone" name="telefone" size="20" placeholder="(11) 90000-0000" required>
+      </p>
+      <p>
+        <label for="senha">Crie uma senha:</label><br>
+        <input type="password" id="senha" name="senha" size="30" minlength="8" required><br>
+        <small>Mínimo de 8 caracteres, com letras e números.</small>
+      </p>
+      <p>
+        <label for="senha2">Repita a senha:</label><br>
+        <input type="password" id="senha2" name="senha2" size="30" minlength="8" required>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. Dados da empresa</legend>
+      <p>
+        <label for="tipo">Tipo de cadastro:</label><br>
+        <input type="radio" id="tipo-pj" name="tipo" value="pj" checked>
+        <label for="tipo-pj">Pessoa jurídica (CNPJ)</label><br>
+        <input type="radio" id="tipo-pf" name="tipo" value="pf">
+        <label for="tipo-pf">Pessoa física (CPF)</label>
+      </p>
+      <p>
+        <label for="razao">Razão social ou nome:</label><br>
+        <input type="text" id="razao" name="razao" size="40" required>
+      </p>
+      <p>
+        <label for="fantasia">Nome que aparece na fatura do cliente:</label><br>
+        <input type="text" id="fantasia" name="fantasia" size="26" maxlength="22" required><br>
+        <small>Até 22 caracteres. É assim que o comprador vai reconhecer a cobrança.</small>
+      </p>
+      <p>
+        <label for="documento">CNPJ ou CPF:</label><br>
+        <input type="text" id="documento" name="documento" size="24" placeholder="00.000.000/0001-00" required>
+      </p>
+      <p>
+        <label for="segmento">Segmento de atuação:</label><br>
+        <select id="segmento" name="segmento">
+          <option value="">Selecione...</option>
+          <option>E-commerce</option>
+          <option>Serviços</option>
+          <option>Educação e cursos</option>
+          <option>Assinaturas e SaaS</option>
+          <option>Marketplace</option>
+          <option>Eventos</option>
+          <option>Outro</option>
+        </select>
+      </p>
+      <p>
+        <label for="faturamento">Faturamento mensal estimado:</label><br>
+        <select id="faturamento" name="faturamento">
+          <option>Até R$ 10.000</option>
+          <option>De R$ 10.001 a R$ 50.000</option>
+          <option>De R$ 50.001 a R$ 200.000</option>
+          <option>Acima de R$ 200.000</option>
+        </select>
+      </p>
+      <p>
+        <label for="site">Site ou loja (opcional):</label><br>
+        <input type="url" id="site" name="site" size="40" placeholder="https://">
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. Conta bancária para recebimento</legend>
+      <p>
+        <label for="banco">Banco:</label><br>
+        <select id="banco" name="banco">
+          <option value="">Selecione...</option>
+          <option value="001">001 — Banco do Brasil</option>
+          <option value="033">033 — Santander</option>
+          <option value="104">104 — Caixa Econômica Federal</option>
+          <option value="237">237 — Bradesco</option>
+          <option value="260">260 — Nu Pagamentos</option>
+          <option value="341">341 — Itaú Unibanco</option>
+          <option value="077">077 — Banco Inter</option>
+        </select>
+      </p>
+      <p>
+        <label for="agencia">Agência:</label>
+        <input type="text" id="agencia" name="agencia" size="8" placeholder="0000">
+        <label for="conta">Conta com dígito:</label>
+        <input type="text" id="conta" name="conta" size="12" placeholder="00000-0">
+      </p>
+      <p>
+        <label for="tipo-conta">Tipo de conta:</label>
+        <select id="tipo-conta" name="tipo_conta">
+          <option>Conta corrente</option>
+          <option>Conta poupança</option>
+          <option>Conta de pagamento</option>
+        </select>
+      </p>
+      <p><small>A conta deve estar no mesmo CPF ou CNPJ cadastrado acima.</small></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Plano inicial</legend>
+      <p>
+        <input type="radio" id="plano-start" name="plano" value="start" checked>
+        <label for="plano-start"><strong>Start</strong> — sem mensalidade, 1,00% no Pix e 4,00% no crédito</label>
+      </p>
+      <p>
+        <input type="radio" id="plano-pro" name="plano" value="pro">
+        <label for="plano-pro"><strong>Pro</strong> — R$ 199,90/mês, 0,80% no Pix e 3,49% no crédito</label>
+      </p>
+      <p><small>Você pode trocar de plano quando quiser, sem multa.</small></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Confirmação</legend>
+      <p>
+        <input type="checkbox" id="termos" name="termos" value="sim" required>
+        <label for="termos">Li e aceito os termos de uso e a política de privacidade.</label>
+      </p>
+      <p>
+        <input type="checkbox" id="novidades" name="novidades" value="sim">
+        <label for="novidades">Quero receber novidades e dicas por e-mail.</label>
+      </p>
+      <p>
+        <button type="submit">Criar conta</button>
+        <button type="reset">Limpar formulário</button>
+      </p>
+    </fieldset>
+
+  </form>
+
+  <p>Já tem conta? <a href="login.html">Entrar</a></p>
+</main>
+
+<hr>
+
+<footer>
+  <p><small>Seus dados são usados apenas para análise cadastral e prevenção a fraudes.</small></p>
+  <p><a href="index.html">Voltar ao site</a></p>
+</footer>
+
+</body>
+</html>

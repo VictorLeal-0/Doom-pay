@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurações — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <p>
+    Conta: <strong>Doom Comércio Digital Ltda.</strong> ·
+    <a href="login.html">Sair</a>
+  </p>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <strong>Configurações</strong>
+  </nav>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Configurações</h2>
+<nav>
+  <p>
+    Nesta página:
+    <a href="#empresa">Empresa</a> ·
+    <a href="#bancos">Contas bancárias</a> ·
+    <a href="#equipe">Equipe</a> ·
+    <a href="#checkout-cfg">Checkout</a> ·
+    <a href="#notificacoes">Notificações</a> ·
+    <a href="#seguranca">Segurança</a> ·
+    <a href="#plano">Plano</a> ·
+    <a href="#encerrar">Encerrar conta</a>
+  </p>
+</nav>
+
+<hr>
+
+<section id="empresa">
+  <h3>Dados da empresa</h3>
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Cadastro</legend>
+      <p>
+        <label for="razao">Razão social:</label><br>
+        <input type="text" id="razao" name="razao" size="40" value="Doom Comércio Digital Ltda.">
+      </p>
+      <p>
+        <label for="fantasia">Nome na fatura do cliente:</label><br>
+        <input type="text" id="fantasia" name="fantasia" size="26" maxlength="22" value="DOOMSHOP">
+      </p>
+      <p>
+        <label for="cnpj">CNPJ:</label><br>
+        <input type="text" id="cnpj" name="cnpj" size="24" value="12.345.678/0001-90" readonly>
+        <br><small>Para alterar o CNPJ é necessário abrir um chamado com o suporte.</small>
+      </p>
+      <p>
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" size="10" value="05422-000">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" size="34" value="Rua das Acácias, 120 — Pinheiros">
+      </p>
+      <p>
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" size="20" value="São Paulo">
+        <label for="uf">UF:</label>
+        <select id="uf" name="uf">
+          <option>SP</option><option>RJ</option><option>MG</option>
+          <option>RS</option><option>PR</option><option>SC</option>
+          <option>BA</option><option>PE</option><option>CE</option>
+          <option>DF</option><option>GO</option>
+        </select>
+      </p>
+      <p>
+        <label for="site">Site:</label><br>
+        <input type="url" id="site" name="site" size="40" value="https://loja.doomshop.com.br">
+      </p>
+      <p><button type="submit">Salvar dados da empresa</button></p>
+    </fieldset>
+  </form>
+</section>
+
+<hr>
+
+<section id="bancos">
+  <h3>Contas bancárias</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">Banco</th>
+        <th scope="col">Agência</th>
+        <th scope="col">Conta</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Situação</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>341 — Itaú Unibanco</td>
+        <td>1234</td>
+        <td>56789-0</td>
+        <td>Corrente</td>
+        <td>Principal · Verificada</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>237 — Bradesco</td>
+        <td>4321</td>
+        <td>09876-5</td>
+        <td>Corrente</td>
+        <td>Verificada</td>
+        <td>
+          <a href="configuracoes.html?principal=2">Tornar principal</a> ·
+          <a href="configuracoes.html?remover=2">Remover</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Adicionar conta bancária</legend>
+      <p>
+        <label for="banco">Banco:</label>
+        <select id="banco" name="banco">
+          <option value="">Selecione...</option>
+          <option value="001">001 — Banco do Brasil</option>
+          <option value="033">033 — Santander</option>
+          <option value="104">104 — Caixa Econômica Federal</option>
+          <option value="237">237 — Bradesco</option>
+          <option value="260">260 — Nu Pagamentos</option>
+          <option value="341">341 — Itaú Unibanco</option>
+          <option value="077">077 — Banco Inter</option>
+        </select>
+      </p>
+      <p>
+        <label for="agencia">Agência:</label>
+        <input type="text" id="agencia" name="agencia" size="8">
+        <label for="conta">Conta com dígito:</label>
+        <input type="text" id="conta" name="conta" size="12">
+      </p>
+      <p><button type="submit">Adicionar conta</button></p>
+      <p><small>A conta precisa estar no CNPJ 12.345.678/0001-90.</small></p>
+    </fieldset>
+  </form>
+</section>
+
+<hr>
+
+<section id="equipe">
+  <h3>Equipe e permissões</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">Usuário</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Perfil</th>
+        <th scope="col">Último acesso</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Victor Eduardo</td>
+        <td>victor@doomshop.com.br</td>
+        <td>Administrador</td>
+        <td>01/10/2026 15:10</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Renata Alves</td>
+        <td>renata@doomshop.com.br</td>
+        <td>Financeiro</td>
+        <td>01/10/2026 09:42</td>
+        <td><a href="configuracoes.html?remover-usuario=2">Remover</a></td>
+      </tr>
+      <tr>
+        <td>Diego Martins</td>
+        <td>diego@doomshop.com.br</td>
+        <td>Desenvolvedor</td>
+        <td>30/09/2026 17:28</td>
+        <td><a href="configuracoes.html?remover-usuario=3">Remover</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Permissões por perfil</h4>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">Recurso</th>
+        <th scope="col">Administrador</th>
+        <th scope="col">Financeiro</th>
+        <th scope="col">Desenvolvedor</th>
+        <th scope="col">Somente leitura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Ver dashboard</th>
+        <td>Sim</td><td>Sim</td><td>Sim</td><td>Sim</td>
+      </tr>
+      <tr>
+        <th scope="row">Estornar transação</th>
+        <td>Sim</td><td>Sim</td><td>Não</td><td>Não</td>
+      </tr>
+      <tr>
+        <th scope="row">Solicitar saque</th>
+        <td>Sim</td><td>Sim</td><td>Não</td><td>Não</td>
+      </tr>
+      <tr>
+        <th scope="row">Ver e rotacionar chaves</th>
+        <td>Sim</td><td>Não</td><td>Sim</td><td>Não</td>
+      </tr>
+      <tr>
+        <th scope="row">Gerenciar equipe</th>
+        <td>Sim</td><td>Não</td><td>Não</td><td>Não</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Convidar usuário</legend>
+      <p>
+        <label for="conv-email">E-mail:</label>
+        <input type="email" id="conv-email" name="email" size="30" required>
+        <label for="conv-perfil">Perfil:</label>
+        <select id="conv-perfil" name="perfil">
+          <option>Administrador</option>
+          <option>Financeiro</option>
+          <option>Desenvolvedor</option>
+          <option>Somente leitura</option>
+        </select>
+        <button type="submit">Enviar convite</button>
+      </p>
+    </fieldset>
+  </form>
+</section>
+
+<hr>
+
+<section id="checkout-cfg">
+  <h3>Checkout</h3>
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Métodos aceitos</legend>
+      <p>
+        <input type="checkbox" id="ac-credito" name="metodos" value="credito" checked>
+        <label for="ac-credito">Cartão de crédito</label><br>
+        <input type="checkbox" id="ac-pix" name="metodos" value="pix" checked>
+        <label for="ac-pix">Pix</label>
+      </p>
+      <p>
+        <label for="max-parcelas">Número máximo de parcelas:</label>
+        <select id="max-parcelas" name="max_parcelas">
+          <option>1</option><option>3</option><option>6</option>
+          <option selected>12</option>
+        </select>
+      </p>
+      <p>
+        <label for="juros">A partir de qual parcela cobrar juros do cliente:</label>
+        <select id="juros" name="juros">
+          <option>Nunca (eu absorvo os juros)</option>
+          <option selected>4ª parcela</option>
+          <option>7ª parcela</option>
+          <option>Sempre</option>
+        </select>
+      </p>
+      <p>
+        <label for="pix-exp">Validade do código Pix:</label>
+        <select id="pix-exp" name="pix_exp">
+          <option>15 minutos</option>
+          <option selected>30 minutos</option>
+          <option>1 hora</option>
+          <option>24 horas</option>
+        </select>
+      </p>
+      <p>
+        <label for="retorno">URL de retorno após o pagamento:</label><br>
+        <input type="url" id="retorno" name="retorno" size="46" value="https://loja.doomshop.com.br/obrigado">
+      </p>
+      <p>
+        <input type="checkbox" id="salvar-cartao" name="salvar_cartao" value="sim" checked>
+        <label for="salvar-cartao">Permitir que o cliente salve o cartão para a próxima compra</label>
+      </p>
+      <p><button type="submit">Salvar configurações do checkout</button></p>
+    </fieldset>
+  </form>
+</section>
+
+<hr>
+
+<section id="notificacoes">
+  <h3>Notificações</h3>
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Avisos por e-mail</legend>
+      <table border="1">
+        <thead>
+          <tr>
+            <th scope="col">Evento</th>
+            <th scope="col">Receber</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><label for="n1">Cada pagamento aprovado</label></td>
+            <td><input type="checkbox" id="n1" name="notif" value="aprovado"></td>
+          </tr>
+          <tr>
+            <td><label for="n2">Resumo diário das vendas</label></td>
+            <td><input type="checkbox" id="n2" name="notif" value="resumo" checked></td>
+          </tr>
+          <tr>
+            <td><label for="n3">Estorno solicitado</label></td>
+            <td><input type="checkbox" id="n3" name="notif" value="estorno" checked></td>
+          </tr>
+          <tr>
+            <td><label for="n4">Chargeback aberto</label></td>
+            <td><input type="checkbox" id="n4" name="notif" value="chargeback" checked></td>
+          </tr>
+          <tr>
+            <td><label for="n5">Saque concluído</label></td>
+            <td><input type="checkbox" id="n5" name="notif" value="saque" checked></td>
+          </tr>
+          <tr>
+            <td><label for="n6">Falha na entrega de webhook</label></td>
+            <td><input type="checkbox" id="n6" name="notif" value="webhook" checked></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <label for="email-notif">Enviar para:</label>
+        <input type="email" id="email-notif" name="email_notif" size="30" value="financeiro@doomshop.com.br">
+      </p>
+      <p><button type="submit">Salvar preferências</button></p>
+    </fieldset>
+  </form>
+</section>
+
+<hr>
+
+<section id="seguranca">
+  <h3>Segurança</h3>
+
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Alterar senha</legend>
+      <p>
+        <label for="atual">Senha atual:</label><br>
+        <input type="password" id="atual" name="atual" size="30" required>
+      </p>
+      <p>
+        <label for="nova">Nova senha:</label><br>
+        <input type="password" id="nova" name="nova" size="30" minlength="8" required>
+      </p>
+      <p>
+        <label for="nova2">Repita a nova senha:</label><br>
+        <input type="password" id="nova2" name="nova2" size="30" minlength="8" required>
+      </p>
+      <p><button type="submit">Alterar senha</button></p>
+    </fieldset>
+  </form>
+
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Verificação em duas etapas</legend>
+      <p>Situação atual: <strong>Desativada</strong></p>
+      <p>
+        <input type="radio" id="2fa-app" name="2fa" value="app" checked>
+        <label for="2fa-app">Aplicativo autenticador (recomendado)</label><br>
+        <input type="radio" id="2fa-sms" name="2fa" value="sms">
+        <label for="2fa-sms">Código por SMS</label>
+      </p>
+      <p><button type="submit">Ativar verificação em duas etapas</button></p>
+    </fieldset>
+  </form>
+
+  <h4>Sessões ativas</h4>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">Dispositivo</th>
+        <th scope="col">Local</th>
+        <th scope="col">Último acesso</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Windows · Chrome (esta sessão)</td>
+        <td>São Paulo/SP</td>
+        <td>Agora</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Android · App Doom Pay</td>
+        <td>São Paulo/SP</td>
+        <td>01/10/2026 08:14</td>
+        <td><a href="configuracoes.html?encerrar=2">Encerrar</a></td>
+      </tr>
+      <tr>
+        <td>macOS · Safari</td>
+        <td>Campinas/SP</td>
+        <td>27/09/2026 21:03</td>
+        <td><a href="configuracoes.html?encerrar=3">Encerrar</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p><a href="configuracoes.html?encerrar=todas">Encerrar todas as outras sessões</a></p>
+</section>
+
+<hr>
+
+<section id="plano">
+  <h3>Plano e cobrança</h3>
+  <table border="1">
+    <tbody>
+      <tr><th scope="row">Plano atual</th><td>Pro — R$ 199,90/mês</td></tr>
+      <tr><th scope="row">Taxa Pix</th><td>0,80%</td></tr>
+      <tr><th scope="row">Taxa crédito à vista</th><td>3,49%</td></tr>
+      <tr><th scope="row">Próxima cobrança</th><td>15/10/2026</td></tr>
+      <tr><th scope="row">Forma de pagamento</th><td>Débito automático no saldo</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <a href="configuracoes.html?plano=start">Mudar para o Start</a> ·
+    <a href="configuracoes.html?plano=enterprise">Falar sobre o Enterprise</a> ·
+    <a href="configuracoes.html?faturas=1">Ver faturas anteriores</a>
+  </p>
+</section>
+
+<hr>
+
+<section id="encerrar">
+  <h3>Encerrar conta</h3>
+  <p>
+    O encerramento é definitivo. Antes de solicitar, saque todo o saldo disponível e
+    aguarde a liquidação dos recebíveis futuros.
+  </p>
+  <form action="configuracoes.html" method="post">
+    <fieldset>
+      <legend>Solicitar encerramento</legend>
+      <p>
+        <label for="motivo-saida">Motivo:</label><br>
+        <select id="motivo-saida" name="motivo">
+          <option>Taxas altas</option>
+          <option>Mudança de fornecedor</option>
+          <option>Encerramento da empresa</option>
+          <option>Dificuldade de integração</option>
+          <option>Outro</option>
+        </select>
+      </p>
+      <p>
+        <input type="checkbox" id="confirmo" name="confirmo" value="sim" required>
+        <label for="confirmo">Entendo que esta ação é definitiva.</label>
+      </p>
+      <p><button type="submit">Solicitar encerramento da conta</button></p>
+    </fieldset>
+  </form>
+</section>
+
+</main>
+
+<hr>
+
+<footer>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+  <p><small>Doom Pay — painel do lojista. Dados de demonstração.</small></p>
+</footer>
+
+</body>
+</html>

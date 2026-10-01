@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento recusado — DOOMSHOP</title>
+</head>
+<body>
+
+<header>
+  <h1>DOOMSHOP</h1>
+  <p>Pagamento processado por <strong>Doom Pay</strong></p>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Não foi possível concluir o pagamento</h2>
+<p>
+  O banco emissor não autorizou a cobrança de <strong>R$ 249,90</strong> no cartão
+  final <strong>4821</strong>. <strong>Nenhum valor foi debitado</strong> e o pedido
+  #8842 continua reservado por 30 minutos.
+</p>
+
+<h3>Detalhes da tentativa</h3>
+<table border="1">
+  <tbody>
+    <tr><th scope="row">Pedido</th><td>#8842</td></tr>
+    <tr><th scope="row">Código da tentativa</th><td><code>TRX-100243</code></td></tr>
+    <tr><th scope="row">Data e hora</th><td>30/09/2026 às 19:47</td></tr>
+    <tr><th scope="row">Cartão</th><td>Visa final 4821</td></tr>
+    <tr><th scope="row">Motivo informado</th><td>Saldo ou limite insuficiente</td></tr>
+    <tr><th scope="row">Valor</th><td>R$ 249,90</td></tr>
+  </tbody>
+</table>
+
+<h3>O que você pode fazer</h3>
+<ol>
+  <li>Conferir se o número, a validade e o CVV foram digitados corretamente.</li>
+  <li>Verificar o limite disponível com o seu banco.</li>
+  <li>Tentar outro cartão de crédito.</li>
+  <li>Pagar com <a href="checkout-pix.html">Pix</a> — aprovação imediata e sem limite de cartão.</li>
+  <li>Parcelar a compra para reduzir o valor de cada parcela.</li>
+</ol>
+
+<h3>Tentar novamente</h3>
+<form action="pagamento-aprovado.html" method="post">
+  <fieldset>
+    <legend>Novo cartão</legend>
+    <p>
+      <label for="numero">Número do cartão:</label><br>
+      <input type="text" id="numero" name="numero" size="24" maxlength="19" inputmode="numeric" placeholder="0000 0000 0000 0000" required>
+    </p>
+    <p>
+      <label for="titular">Nome impresso no cartão:</label><br>
+      <input type="text" id="titular" name="titular" size="34" required>
+    </p>
+    <p>
+      <label for="validade">Validade:</label>
+      <input type="month" id="validade" name="validade" required>
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv" size="5" maxlength="4" required>
+    </p>
+    <p>
+      <label for="parcelas">Parcelamento:</label>
+      <select id="parcelas" name="parcelas">
+        <option value="1">1x de R$ 249,90 — sem juros</option>
+        <option value="2">2x de R$ 124,95 — sem juros</option>
+        <option value="3" selected>3x de R$ 83,30 — sem juros</option>
+        <option value="6">6x de R$ 43,93 — total R$ 263,58</option>
+      </select>
+    </p>
+    <p><button type="submit">Tentar pagamento novamente</button></p>
+  </fieldset>
+</form>
+
+<h3>Prefere outro método?</h3>
+<p>
+  <a href="checkout-pix.html"><strong>Pagar R$ 249,90 com Pix</strong></a> ·
+  <a href="checkout.html">Voltar ao checkout</a>
+</p>
+
+<hr>
+
+<h3>Motivos comuns de recusa</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Motivo</th>
+      <th scope="col">O que significa</th>
+      <th scope="col">Solução</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Limite insuficiente</td>
+      <td>O valor ultrapassa o limite disponível</td>
+      <td>Parcelar, usar outro cartão ou pagar via Pix</td>
+    </tr>
+    <tr>
+      <td>Dados incorretos</td>
+      <td>Número, validade ou CVV não conferem</td>
+      <td>Digitar novamente com atenção</td>
+    </tr>
+    <tr>
+      <td>Cartão bloqueado</td>
+      <td>O emissor bloqueou compras online</td>
+      <td>Liberar com o banco pelo app ou telefone</td>
+    </tr>
+    <tr>
+      <td>Suspeita de fraude</td>
+      <td>A operação fugiu do seu padrão de compra</td>
+      <td>Autorizar a compra junto ao banco e tentar de novo</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><small>
+  O Doom Pay não recebe do banco o motivo detalhado da recusa. Para saber exatamente
+  o que aconteceu, fale com o emissor do cartão.
+</small></p>
+
+</main>
+
+<hr>
+
+<footer>
+  <p><strong>Pagamento seguro Doom Pay</strong></p>
+  <p><small>Ambiente de demonstração. Nenhuma cobrança real foi feita.</small></p>
+  <p><a href="index.html">Sobre o Doom Pay</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pague com Pix — DOOMSHOP</title>
+</head>
+<body>
+
+<header>
+  <h1>DOOMSHOP</h1>
+  <p>Pedido #8842 · Pagamento processado por <strong>Doom Pay</strong></p>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Pague R$ 249,90 com Pix</h2>
+<p>O código expira em <strong>29 minutos</strong>. Assim que o banco confirmar, o
+pedido é liberado automaticamente.</p>
+
+<h3>1. Abra o app do seu banco</h3>
+<p>Escolha a opção <strong>Pix &rarr; Pagar com QR Code</strong> ou
+<strong>Pix Copia e Cola</strong>.</p>
+
+<h3>2. Use o código copia e cola</h3>
+<form action="checkout-pix.html" method="post">
+  <p>
+    <label for="codigo">Código Pix:</label><br>
+    <textarea id="codigo" name="codigo" rows="4" cols="56" readonly>00020126580014BR.GOV.BCB.PIX0136doompay-pedido-8842-ana-ribeiro520400005303986540524.905802BR5913DOOM COMERCIO6009SAO PAULO62070503***6304A1B2</textarea>
+  </p>
+  <p>
+    <small>Selecione todo o texto acima e copie (Ctrl+C ou toque e segure no celular).</small>
+  </p>
+</form>
+
+<h3>3. Confira os dados antes de confirmar</h3>
+<table border="1">
+  <tbody>
+    <tr><th scope="row">Recebedor</th><td>DOOM COMERCIO DIGITAL LTDA</td></tr>
+    <tr><th scope="row">CNPJ</th><td>12.345.678/0001-90</td></tr>
+    <tr><th scope="row">Instituição</th><td>Doom Pay Instituição de Pagamento</td></tr>
+    <tr><th scope="row">Valor</th><td><strong>R$ 249,90</strong></td></tr>
+    <tr><th scope="row">Identificador</th><td><code>pedido-8842</code></td></tr>
+    <tr><th scope="row">Validade</th><td>30/09/2026 às 18:42</td></tr>
+  </tbody>
+</table>
+
+<h3>Status do pagamento</h3>
+<p>
+  <progress max="3" value="1">Etapa 1 de 3</progress>
+  Aguardando pagamento
+</p>
+<ol>
+  <li><strong>Código gerado</strong> — concluído</li>
+  <li>Pagamento identificado — aguardando</li>
+  <li>Pedido liberado — aguardando</li>
+</ol>
+<p>
+  <a href="checkout-pix.html">Atualizar status</a> ·
+  <a href="pagamento-aprovado.html">Já paguei</a>
+</p>
+<p><small>
+  Esta página não atualiza sozinha nesta demonstração. Em produção, o status muda
+  automaticamente assim que o webhook de confirmação chega.
+</small></p>
+
+<hr>
+
+<h3>Precisa de outra forma de pagamento?</h3>
+<p><a href="checkout.html">Voltar e pagar com cartão de crédito</a></p>
+
+<h3>Dúvidas sobre o Pix</h3>
+
+<details>
+  <summary>O código venceu. E agora?</summary>
+  <p>Volte ao checkout e gere um novo código. Nenhum valor é cobrado de um código expirado.</p>
+</details>
+
+<details>
+  <summary>Paguei e o pedido não liberou.</summary>
+  <p>
+    A confirmação costuma levar segundos. Se passar de 10 minutos, envie o comprovante
+    para <a href="mailto:suporte@doompay.com.br">suporte@doompay.com.br</a> com o
+    número do pedido.
+  </p>
+</details>
+
+<details>
+  <summary>Posso pagar um valor diferente?</summary>
+  <p>Não. O código é gerado com valor fixo e o banco recusa divergências.</p>
+</details>
+
+</main>
+
+<hr>
+
+<footer>
+  <p><strong>Pagamento seguro Doom Pay</strong></p>
+  <p><small>Ambiente de demonstração. Nenhuma cobrança real é feita.</small></p>
+  <p><a href="index.html">Sobre o Doom Pay</a></p>
+</footer>
+
+</body>
+</html>

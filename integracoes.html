@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrações — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <p>
+    Conta: <strong>Doom Comércio Digital Ltda.</strong> ·
+    <a href="login.html">Sair</a>
+  </p>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <strong>Integrações</strong> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Integrações</h2>
+<nav>
+  <p>
+    Nesta página:
+    <a href="#chaves">Chaves de API</a> ·
+    <a href="#webhooks">Webhooks</a> ·
+    <a href="#documentacao">Documentação</a> ·
+    <a href="#erros">Códigos de erro</a> ·
+    <a href="#cartoes-teste">Cartões de teste</a> ·
+    <a href="#link">Link de pagamento</a>
+  </p>
+</nav>
+
+<hr>
+
+<section id="chaves">
+  <h3>Chaves de API</h3>
+  <p>
+    A chave pública é usada no navegador para tokenizar o cartão. A chave secreta fica
+    apenas no seu servidor e nunca deve ser exposta no front-end.
+  </p>
+
+  <table border="1">
+    <caption>Ambientes disponíveis</caption>
+    <thead>
+      <tr>
+        <th scope="col">Ambiente</th>
+        <th scope="col">Chave pública</th>
+        <th scope="col">Chave secreta</th>
+        <th scope="col">Criada em</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Sandbox</th>
+        <td><code>pk_test_4f8a2b9c1d7e3056</code></td>
+        <td><code>sk_test_••••••••••••3f1a</code></td>
+        <td>14/03/2025</td>
+        <td>
+          <a href="integracoes.html?revelar=sandbox">Revelar</a> ·
+          <a href="integracoes.html?rotacionar=sandbox">Rotacionar</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Produção</th>
+        <td><code>pk_live_7c3e5a1f9b2d8041</code></td>
+        <td><code>sk_live_••••••••••••9d4c</code></td>
+        <td>01/07/2026</td>
+        <td>
+          <a href="integracoes.html?revelar=producao">Revelar</a> ·
+          <a href="integracoes.html?rotacionar=producao">Rotacionar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><small>
+    <strong>Atenção:</strong> ao rotacionar uma chave, a anterior deixa de funcionar
+    em 24 horas. Atualize seus servidores antes do prazo.
+  </small></p>
+
+  <form action="integracoes.html" method="post">
+    <fieldset>
+      <legend>Restringir uso das chaves</legend>
+      <p>
+        <label for="ips">IPs autorizados a usar a chave secreta (um por linha):</label><br>
+        <textarea id="ips" name="ips" rows="3" cols="40">200.150.10.22
+200.150.10.23</textarea>
+      </p>
+      <p>
+        <input type="checkbox" id="bloquear" name="bloquear" value="sim" checked>
+        <label for="bloquear">Bloquear requisições fora dos IPs autorizados</label>
+      </p>
+      <p><button type="submit">Salvar restrições</button></p>
+    </fieldset>
+  </form>
+</section>
+
+<hr>
+
+<section id="webhooks">
+  <h3>Webhooks</h3>
+  <p>
+    O Doom Pay envia uma requisição <code>POST</code> para a sua URL sempre que o
+    estado de um pagamento muda. Responda com HTTP 200 para confirmar o recebimento.
+  </p>
+
+  <h4>Endpoints cadastrados</h4>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">URL</th>
+        <th scope="col">Ambiente</th>
+        <th scope="col">Eventos</th>
+        <th scope="col">Situação</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>https://loja.doomshop.com.br/webhooks/doompay</code></td>
+        <td>Produção</td>
+        <td>Todos</td>
+        <td>Ativo — 100% entregues</td>
+        <td><a href="integracoes.html?testar=1">Testar</a></td>
+      </tr>
+      <tr>
+        <td><code>https://staging.doomshop.com.br/webhooks/doompay</code></td>
+        <td>Sandbox</td>
+        <td>payment.*</td>
+        <td>Ativo — 98% entregues</td>
+        <td><a href="integracoes.html?testar=2">Testar</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Cadastrar novo endpoint</h4>
+  <form action="integracoes.html" method="post">
+    <fieldset>
+      <legend>Novo webhook</legend>
+      <p>
+        <label for="url">URL de destino:</label><br>
+        <input type="url" id="url" name="url" size="46" placeholder="https://seusite.com.br/webhooks/doompay" required>
+      </p>
+      <p>
+        <label for="ambiente">Ambiente:</label>
+        <select id="ambiente" name="ambiente">
+          <option>Sandbox</option>
+          <option>Produção</option>
+        </select>
+      </p>
+      <p>Eventos que deseja receber:</p>
+      <p>
+        <input type="checkbox" id="ev1" name="eventos" value="payment.approved" checked>
+        <label for="ev1"><code>payment.approved</code> — pagamento aprovado</label><br>
+
+        <input type="checkbox" id="ev2" name="eventos" value="payment.declined" checked>
+        <label for="ev2"><code>payment.declined</code> — pagamento recusado</label><br>
+
+        <input type="checkbox" id="ev3" name="eventos" value="payment.pending" checked>
+        <label for="ev3"><code>payment.pending</code> — pagamento em processamento</label><br>
+
+        <input type="checkbox" id="ev4" name="eventos" value="payment.refunded">
+        <label for="ev4"><code>payment.refunded</code> — pagamento estornado</label><br>
+
+        <input type="checkbox" id="ev5" name="eventos" value="payment.chargeback">
+        <label for="ev5"><code>payment.chargeback</code> — contestação aberta</label><br>
+
+        <input type="checkbox" id="ev6" name="eventos" value="payout.completed">
+        <label for="ev6"><code>payout.completed</code> — saque concluído</label>
+      </p>
+      <p><button type="submit">Cadastrar webhook</button></p>
+    </fieldset>
+  </form>
+
+  <h4>Últimas entregas</h4>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">Data e hora</th>
+        <th scope="col">Evento</th>
+        <th scope="col">Transação</th>
+        <th scope="col">Resposta</th>
+        <th scope="col">Tentativas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01/10/2026 14:32:09</td>
+        <td><code>payment.approved</code></td>
+        <td>TRX-100245</td>
+        <td>HTTP 200</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>01/10/2026 13:05:41</td>
+        <td><code>payment.approved</code></td>
+        <td>TRX-100244</td>
+        <td>HTTP 200</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>30/09/2026 19:47:12</td>
+        <td><code>payment.declined</code></td>
+        <td>TRX-100243</td>
+        <td>HTTP 500</td>
+        <td>3 (reenviado com sucesso)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><small>
+    Em caso de falha, reenviamos o webhook até 5 vezes, com intervalos crescentes de
+    1, 5, 15, 60 e 240 minutos.
+  </small></p>
+
+  <h4>Validação da assinatura</h4>
+  <p>Cada requisição traz um cabeçalho de assinatura que você deve conferir:</p>
+<pre><code>X-DoomPay-Signature: sha256=9f2c1b7a3e5d8046ab12cd34ef56ab78
+X-DoomPay-Timestamp: 1790000000</code></pre>
+  <p>
+    Gere o HMAC-SHA256 do corpo da requisição usando sua chave secreta e compare com o
+    valor recebido. Descarte requisições com mais de 5 minutos.
+  </p>
+</section>
+
+<hr>
+
+<section id="documentacao">
+  <h3>Documentação da API</h3>
+  <p>URL base: <code>https://api.doompay.com.br/v1</code></p>
+
+  <table border="1">
+    <caption>Principais endpoints</caption>
+    <thead>
+      <tr>
+        <th scope="col">Método</th>
+        <th scope="col">Rota</th>
+        <th scope="col">Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>POST</td><td><code>/payments</code></td><td>Cria uma cobrança</td></tr>
+      <tr><td>GET</td><td><code>/payments/{id}</code></td><td>Consulta uma transação</td></tr>
+      <tr><td>GET</td><td><code>/payments</code></td><td>Lista transações com filtros</td></tr>
+      <tr><td>POST</td><td><code>/payments/{id}/refund</code></td><td>Estorna total ou parcialmente</td></tr>
+      <tr><td>POST</td><td><code>/tokens</code></td><td>Tokeniza um cartão</td></tr>
+      <tr><td>GET</td><td><code>/customers</code></td><td>Lista clientes</td></tr>
+      <tr><td>GET</td><td><code>/balance</code></td><td>Consulta saldos</td></tr>
+      <tr><td>POST</td><td><code>/payouts</code></td><td>Solicita um saque</td></tr>
+    </tbody>
+  </table>
+
+  <h4>1. Tokenizar o cartão (no navegador, com a chave pública)</h4>
+<pre><code>POST /v1/tokens
+Authorization: Bearer pk_test_4f8a2b9c1d7e3056
+Content-Type: application/json
+
+{
+  "card": {
+    "number": "4111111111111111",
+    "holder_name": "ANA R RIBEIRO",
+    "exp_month": 9,
+    "exp_year": 2029,
+    "cvv": "123"
+  }
+}</code></pre>
+
+  <h4>Resposta</h4>
+<pre><code>{ "token": "tok_1a2b3c4d5e", "brand": "visa", "last4": "4821" }</code></pre>
+
+  <h4>2. Criar a cobrança (no seu servidor, com a chave secreta)</h4>
+<pre><code>POST /v1/payments
+Authorization: Bearer sk_test_••••••••••••3f1a
+Content-Type: application/json
+
+{
+  "reference": "pedido-8842",
+  "amount": 24990,
+  "currency": "BRL",
+  "method": "credit_card",
+  "installments": 1,
+  "card_token": "tok_1a2b3c4d5e",
+  "customer": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@exemplo.com",
+    "document": "12345678900"
+  },
+  "items": [
+    { "description": "Plano Pro mensal", "quantity": 1, "unit_amount": 19990 },
+    { "description": "Taxa de ativacao", "quantity": 1, "unit_amount": 5000 }
+  ],
+  "postback_url": "https://loja.doomshop.com.br/webhooks/doompay"
+}</code></pre>
+
+  <h4>Cobrança via Pix</h4>
+<pre><code>POST /v1/payments
+Authorization: Bearer sk_test_••••••••••••3f1a
+
+{
+  "reference": "pedido-8843",
+  "amount": 54000,
+  "method": "pix",
+  "expires_in": 1800,
+  "customer": { "name": "Camila Duarte", "email": "camila.d@exemplo.com" }
+}</code></pre>
+
+  <h4>Resposta do Pix</h4>
+<pre><code>{
+  "id": "TRX-100242",
+  "status": "pending",
+  "pix": {
+    "qr_code": "00020126580014BR.GOV.BCB.PIX0136doompay-exemplo5204000053039865802BR",
+    "expires_at": "2026-09-30T18:42:00Z"
+  }
+}</code></pre>
+
+  <p><small>Todos os valores monetários são inteiros, em centavos. R$ 249,90 = 24990.</small></p>
+</section>
+
+<hr>
+
+<section id="erros">
+  <h3>Códigos de erro</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">HTTP</th>
+        <th scope="col">Código</th>
+        <th scope="col">Significado</th>
+        <th scope="col">Como resolver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>400</td>
+        <td><code>invalid_parameter</code></td>
+        <td>Campo ausente ou mal formatado</td>
+        <td>Confira o corpo da requisição</td>
+      </tr>
+      <tr>
+        <td>401</td>
+        <td><code>unauthorized</code></td>
+        <td>Chave inválida ou ambiente errado</td>
+        <td>Verifique o cabeçalho Authorization</td>
+      </tr>
+      <tr>
+        <td>402</td>
+        <td><code>card_declined</code></td>
+        <td>Emissor recusou o pagamento</td>
+        <td>Oriente o cliente a tentar outro cartão</td>
+      </tr>
+      <tr>
+        <td>404</td>
+        <td><code>not_found</code></td>
+        <td>Transação inexistente</td>
+        <td>Confira o ID informado</td>
+      </tr>
+      <tr>
+        <td>409</td>
+        <td><code>duplicate_reference</code></td>
+        <td>Referência já usada</td>
+        <td>Use um identificador único por pedido</td>
+      </tr>
+      <tr>
+        <td>422</td>
+        <td><code>amount_too_low</code></td>
+        <td>Valor abaixo do mínimo de R$ 1,00</td>
+        <td>Ajuste o valor da cobrança</td>
+      </tr>
+      <tr>
+        <td>429</td>
+        <td><code>rate_limit</code></td>
+        <td>Mais de 100 requisições por minuto</td>
+        <td>Reduza a frequência e tente de novo</td>
+      </tr>
+      <tr>
+        <td>500</td>
+        <td><code>internal_error</code></td>
+        <td>Falha no Doom Pay</td>
+        <td>Repita a requisição em alguns segundos</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<section id="cartoes-teste">
+  <h3>Cartões de teste (sandbox)</h3>
+  <p>Use estes números no ambiente de sandbox para simular cada resultado:</p>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">Número</th>
+        <th scope="col">Bandeira</th>
+        <th scope="col">Resultado simulado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>4111 1111 1111 1111</code></td>
+        <td>Visa</td>
+        <td>Aprovado</td>
+      </tr>
+      <tr>
+        <td><code>5555 4444 3333 1111</code></td>
+        <td>Mastercard</td>
+        <td>Aprovado</td>
+      </tr>
+      <tr>
+        <td><code>4000 0000 0000 0002</code></td>
+        <td>Visa</td>
+        <td>Recusado — limite insuficiente</td>
+      </tr>
+      <tr>
+        <td><code>4000 0000 0000 0069</code></td>
+        <td>Visa</td>
+        <td>Recusado — cartão expirado</td>
+      </tr>
+      <tr>
+        <td><code>4000 0000 0000 0119</code></td>
+        <td>Visa</td>
+        <td>Em processamento</td>
+      </tr>
+      <tr>
+        <td><code>4000 0000 0000 0259</code></td>
+        <td>Visa</td>
+        <td>Aprovado e depois contestado</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><small>Use qualquer CVV de 3 dígitos e uma validade futura.</small></p>
+</section>
+
+<hr>
+
+<section id="link">
+  <h3>Link de pagamento</h3>
+  <p>
+    Não quer programar? Gere um link e envie ao cliente por WhatsApp, e-mail ou
+    redes sociais.
+  </p>
+  <form action="integracoes.html" method="post">
+    <fieldset>
+      <legend>Gerar link de pagamento</legend>
+      <p>
+        <label for="descricao">Descrição do produto:</label><br>
+        <input type="text" id="descricao" name="descricao" size="40" required>
+      </p>
+      <p>
+        <label for="valor">Valor (R$):</label>
+        <input type="number" id="valor" name="valor" min="1" step="0.01" size="10" required>
+      </p>
+      <p>
+        <label for="validade">Link válido até:</label>
+        <input type="date" id="validade" name="validade">
+      </p>
+      <p>
+        Métodos aceitos:
+        <input type="checkbox" id="m-cartao" name="metodos" value="cartao" checked>
+        <label for="m-cartao">Cartão</label>
+        <input type="checkbox" id="m-pix" name="metodos" value="pix" checked>
+        <label for="m-pix">Pix</label>
+      </p>
+      <p><button type="submit">Gerar link</button></p>
+    </fieldset>
+  </form>
+
+  <p>Links ativos:</p>
+  <table border="1">
+    <thead>
+      <tr>
+        <th scope="col">Descrição</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Link</th>
+        <th scope="col">Pagos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Plano Pro mensal</td>
+        <td>R$ 199,90</td>
+        <td><a href="checkout.html">pay.doompay.com.br/l/3f8a2b</a></td>
+        <td>48</td>
+      </tr>
+      <tr>
+        <td>Consultoria avulsa</td>
+        <td>R$ 850,00</td>
+        <td><a href="checkout.html">pay.doompay.com.br/l/9c1d7e</a></td>
+        <td>6</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+
+<hr>
+
+<footer>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+  <p><small>Doom Pay — painel do lojista. Dados de demonstração.</small></p>
+</footer>
+
+</body>
+</html>

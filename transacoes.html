@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transações — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <p>
+    Conta: <strong>Doom Comércio Digital Ltda.</strong> ·
+    Ambiente: <strong>Produção</strong> ·
+    <a href="login.html">Sair</a>
+  </p>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <strong>Transações</strong> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Transações</h2>
+
+<form action="transacoes.html" method="get">
+  <fieldset>
+    <legend>Filtros</legend>
+    <p>
+      <label for="busca">Buscar por ID, cliente, e-mail ou documento:</label><br>
+      <input type="search" id="busca" name="busca" size="40" placeholder="TRX-100245 ou ana@exemplo.com">
+    </p>
+    <p>
+      <label for="status">Status:</label>
+      <select id="status" name="status">
+        <option value="">Todos</option>
+        <option value="aprovado">Aprovado</option>
+        <option value="processando">Em processamento</option>
+        <option value="recusado">Recusado</option>
+        <option value="estornado">Estornado</option>
+        <option value="chargeback">Chargeback</option>
+      </select>
+
+      <label for="metodo">Método:</label>
+      <select id="metodo" name="metodo">
+        <option value="">Todos</option>
+        <option value="pix">Pix</option>
+        <option value="credito">Cartão de crédito</option>
+      </select>
+    </p>
+    <p>
+      <label for="de">De:</label>
+      <input type="date" id="de" name="de" value="2026-09-01">
+      <label for="ate">Até:</label>
+      <input type="date" id="ate" name="ate" value="2026-10-01">
+    </p>
+    <p>
+      <label for="min">Valor mínimo (R$):</label>
+      <input type="number" id="min" name="min" size="8" min="0" step="0.01">
+      <label for="max">Valor máximo (R$):</label>
+      <input type="number" id="max" name="max" size="8" min="0" step="0.01">
+    </p>
+    <p>
+      <button type="submit">Filtrar</button>
+      <button type="reset">Limpar filtros</button>
+    </p>
+  </fieldset>
+</form>
+
+<h3>Resultado</h3>
+<p>
+  Exibindo <strong>12</strong> de <strong>1.375</strong> transações ·
+  Total aprovado no filtro: <strong>R$ 310.500,00</strong> ·
+  <a href="transacoes.html?exportar=csv">Exportar CSV</a> ·
+  <a href="transacoes.html?exportar=pdf">Exportar PDF</a>
+</p>
+
+<table border="1">
+  <caption>Transações de 01/09/2026 a 01/10/2026</caption>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Data e hora</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Método</th>
+      <th scope="col">Valor bruto</th>
+      <th scope="col">Taxa</th>
+      <th scope="col">Líquido</th>
+      <th scope="col">Status</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TRX-100245</td>
+      <td>01/10/2026 14:32</td>
+      <td>Ana Ribeiro</td>
+      <td>Crédito 1x</td>
+      <td>R$ 249,90</td>
+      <td>R$ 9,99</td>
+      <td>R$ 239,91</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100244</td>
+      <td>01/10/2026 13:05</td>
+      <td>Lojas Horizonte Ltda.</td>
+      <td>Pix</td>
+      <td>R$ 1.780,00</td>
+      <td>R$ 17,80</td>
+      <td>R$ 1.762,20</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100243</td>
+      <td>30/09/2026 19:47</td>
+      <td>Marcos Teixeira</td>
+      <td>Crédito 1x</td>
+      <td>R$ 89,00</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Recusado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100242</td>
+      <td>30/09/2026 18:12</td>
+      <td>Camila Duarte</td>
+      <td>Pix</td>
+      <td>R$ 540,00</td>
+      <td>R$ 5,40</td>
+      <td>R$ 534,60</td>
+      <td>Em processamento</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100241</td>
+      <td>29/09/2026 10:21</td>
+      <td>Estúdio Nórdico ME</td>
+      <td>Crédito 3x</td>
+      <td>R$ 3.200,00</td>
+      <td>R$ 128,00</td>
+      <td>R$ 3.072,00</td>
+      <td>Estornado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100240</td>
+      <td>29/09/2026 09:03</td>
+      <td>Paula Andrade</td>
+      <td>Pix</td>
+      <td>R$ 120,00</td>
+      <td>R$ 1,20</td>
+      <td>R$ 118,80</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100239</td>
+      <td>28/09/2026 21:55</td>
+      <td>Rafael Lima</td>
+      <td>Crédito 6x</td>
+      <td>R$ 1.450,00</td>
+      <td>R$ 57,86</td>
+      <td>R$ 1.392,14</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100238</td>
+      <td>28/09/2026 16:40</td>
+      <td>Juliana Prado</td>
+      <td>Crédito 1x</td>
+      <td>R$ 310,00</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Recusado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100237</td>
+      <td>27/09/2026 11:18</td>
+      <td>Mercado Vila Nova</td>
+      <td>Pix</td>
+      <td>R$ 2.940,00</td>
+      <td>R$ 29,40</td>
+      <td>R$ 2.910,60</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100236</td>
+      <td>26/09/2026 15:02</td>
+      <td>Bruno Carvalho</td>
+      <td>Crédito 2x</td>
+      <td>R$ 680,00</td>
+      <td>R$ 27,13</td>
+      <td>R$ 652,87</td>
+      <td>Chargeback</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100235</td>
+      <td>26/09/2026 08:47</td>
+      <td>Fernanda Souza</td>
+      <td>Pix</td>
+      <td>R$ 75,00</td>
+      <td>R$ 0,75</td>
+      <td>R$ 74,25</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>TRX-100234</td>
+      <td>25/09/2026 19:29</td>
+      <td>Tech Solutions ME</td>
+      <td>Crédito 12x</td>
+      <td>R$ 7.800,00</td>
+      <td>R$ 311,22</td>
+      <td>R$ 7.488,78</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row" colspan="4">Totais da página</th>
+      <td>R$ 19.233,90</td>
+      <td>R$ 588,75</td>
+      <td>R$ 18.246,15</td>
+      <td colspan="2"></td>
+    </tr>
+  </tfoot>
+</table>
+
+<h3>Paginação</h3>
+<p>
+  Página 1 de 115 ·
+  <a href="transacoes.html?pagina=2">Próxima</a> ·
+  <a href="transacoes.html?pagina=115">Última</a>
+</p>
+<p>
+  Ir para a página:
+</p>
+<form action="transacoes.html" method="get">
+  <p>
+    <label for="pagina">Número da página:</label>
+    <input type="number" id="pagina" name="pagina" min="1" max="115" value="1" size="4">
+    <label for="por-pagina">Itens por página:</label>
+    <select id="por-pagina" name="por_pagina">
+      <option>12</option>
+      <option>25</option>
+      <option>50</option>
+      <option>100</option>
+    </select>
+    <button type="submit">Ir</button>
+  </p>
+</form>
+
+<h3>Legenda de status</h3>
+<dl>
+  <dt>Aprovado</dt>
+  <dd>Pagamento autorizado. O valor entra na agenda de recebíveis.</dd>
+  <dt>Em processamento</dt>
+  <dd>Aguardando confirmação do emissor ou compensação do Pix.</dd>
+  <dt>Recusado</dt>
+  <dd>Negado pelo banco emissor ou pela análise antifraude.</dd>
+  <dt>Estornado</dt>
+  <dd>Valor devolvido ao comprador, total ou parcialmente.</dd>
+  <dt>Chargeback</dt>
+  <dd>Contestação aberta pelo portador do cartão. Exige envio de defesa.</dd>
+</dl>
+
+</main>
+
+<hr>
+
+<footer>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+  <p><small>Doom Pay — painel do lojista. Dados de demonstração.</small></p>
+</footer>
+
+</body>
+</html>

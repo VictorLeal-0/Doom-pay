@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doom Pay — Receba pagamentos em qualquer lugar</title>
+<meta name="description" content="Gateway de pagamentos para empresas e lojistas: cartão de crédito, Pix, dashboard financeiro e API.">
+</head>
+<body>
+
+<a id="topo"></a>
+
+<header>
+  <h1>Doom Pay</h1>
+  <p><strong>Receba por cartão de crédito e Pix com uma integração só.</strong></p>
+  <nav>
+    <a href="#recursos">Recursos</a> |
+    <a href="#metodos">Métodos</a> |
+    <a href="#taxas">Taxas</a> |
+    <a href="#integracao">Integração</a> |
+    <a href="#faq">Dúvidas</a> |
+    <a href="login.html">Entrar</a> |
+    <a href="cadastro.html">Criar conta grátis</a>
+  </nav>
+</header>
+
+<hr>
+
+<main>
+
+<section>
+  <h2>Toda a sua operação financeira em um só lugar</h2>
+  <p>
+    Saldo, valores a receber, volume transacionado, taxas e indicadores de aprovação.
+    Sem planilha, sem conciliação manual, sem surpresa no fim do mês.
+  </p>
+  <p>
+    <strong><a href="cadastro.html">Criar minha conta</a></strong> &nbsp;·&nbsp;
+    <a href="dashboard.html">Ver demonstração do painel</a> &nbsp;·&nbsp;
+    <a href="checkout.html">Ver checkout</a>
+  </p>
+  <p><small>Conta gratuita. Você paga apenas por transação aprovada.</small></p>
+</section>
+
+<hr>
+
+<section id="recursos">
+  <h2>Recursos</h2>
+
+  <h3>Dashboard financeiro</h3>
+  <p>Saldo disponível, agenda de recebíveis, volume, taxas e aprovação em tempo real.</p>
+
+  <h3>Gestão de transações</h3>
+  <p>Busque, filtre e acompanhe cada pagamento, do aprovado ao estornado.</p>
+
+  <h3>Base de clientes</h3>
+  <p>Histórico de compras, ticket médio e dados de contato de cada comprador.</p>
+
+  <h3>Recebimentos e saques</h3>
+  <p>Veja quando cada valor é liberado e transfira para sua conta quando quiser.</p>
+
+  <h3>API e webhooks</h3>
+  <p>Chaves de sandbox e produção, notificações automáticas e documentação pronta.</p>
+
+  <h3>Checkout transparente</h3>
+  <p>Cartão e Pix na sua própria página, com resumo da compra e retorno imediato.</p>
+</section>
+
+<hr>
+
+<section id="metodos">
+  <h2>Métodos de pagamento aceitos</h2>
+  <table border="1">
+    <caption>Métodos disponíveis no Doom Pay</caption>
+    <thead>
+      <tr>
+        <th scope="col">Método</th>
+        <th scope="col">Prazo de liberação</th>
+        <th scope="col">Parcelamento</th>
+        <th scope="col">Confirmação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Pix</th>
+        <td>1 dia útil</td>
+        <td>Não</td>
+        <td>Automática, em segundos</td>
+      </tr>
+      <tr>
+        <th scope="row">Cartão de crédito</th>
+        <td>30 dias</td>
+        <td>Até 12x</td>
+        <td>Imediata (autorização)</td>
+      </tr>
+      <tr>
+        <th scope="row">Cartão de crédito antecipado</th>
+        <td>2 dias úteis</td>
+        <td>Até 12x</td>
+        <td>Imediata (autorização)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<section id="taxas">
+  <h2>Taxas</h2>
+  <table border="1">
+    <caption>Planos e tarifas por transação aprovada</caption>
+    <thead>
+      <tr>
+        <th scope="col">Plano</th>
+        <th scope="col">Pix</th>
+        <th scope="col">Crédito à vista</th>
+        <th scope="col">Crédito parcelado</th>
+        <th scope="col">Mensalidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Start</th>
+        <td>1,00%</td>
+        <td>4,00%</td>
+        <td>4,50% + 1,99% a.m.</td>
+        <td>R$ 0,00</td>
+      </tr>
+      <tr>
+        <th scope="row">Pro</th>
+        <td>0,80%</td>
+        <td>3,49%</td>
+        <td>3,99% + 1,89% a.m.</td>
+        <td>R$ 199,90</td>
+      </tr>
+      <tr>
+        <th scope="row">Enterprise</th>
+        <td>Sob consulta</td>
+        <td>Sob consulta</td>
+        <td>Sob consulta</td>
+        <td>Sob consulta</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5"><small>Sem taxa de adesão. Sem taxa por boleto recusado. Saque gratuito.</small></td>
+      </tr>
+    </tfoot>
+  </table>
+  <p><a href="cadastro.html">Começar com o plano Start</a></p>
+</section>
+
+<hr>
+
+<section>
+  <h2>Como funciona</h2>
+  <ol>
+    <li>Crie sua conta e informe os dados da empresa.</li>
+    <li>Pegue suas chaves de API no ambiente de sandbox.</li>
+    <li>Integre o checkout ou use o link de pagamento pronto.</li>
+    <li>Suba para produção e comece a receber.</li>
+    <li>Acompanhe tudo pelo painel e saque quando quiser.</li>
+  </ol>
+</section>
+
+<hr>
+
+<section id="integracao">
+  <h2>Integração em poucas linhas</h2>
+  <p>Crie uma cobrança com uma requisição:</p>
+<pre><code>POST /v1/payments
+Host: api.doompay.com.br
+Authorization: Bearer sk_test_sua_chave_aqui
+Content-Type: application/json
+
+{
+  "amount": 24990,
+  "currency": "BRL",
+  "method": "pix",
+  "customer": { "name": "Ana Ribeiro", "email": "ana@exemplo.com" }
+}</code></pre>
+  <p>E receba a confirmação por webhook:</p>
+<pre><code>{ "id": "TRX-100245", "status": "approved", "net_amount": 23991 }</code></pre>
+  <p><a href="integracoes.html">Ver documentação completa</a></p>
+</section>
+
+<hr>
+
+<section>
+  <h2>Segurança</h2>
+  <ul>
+    <li>Dados de cartão nunca são armazenados: trabalhamos com tokens de uso único.</li>
+    <li>Todo o tráfego ocorre sobre HTTPS.</li>
+    <li>Painel protegido por rotas autenticadas e verificação em duas etapas.</li>
+    <li>Ambientes de sandbox e produção totalmente separados.</li>
+    <li>Análise antifraude em todas as transações de cartão.</li>
+  </ul>
+</section>
+
+<hr>
+
+<section id="faq">
+  <h2>Dúvidas frequentes</h2>
+
+  <details>
+    <summary>Preciso ter CNPJ para abrir conta?</summary>
+    <p>Não. Aceitamos CPF para autônomos e CNPJ para empresas de qualquer porte.</p>
+  </details>
+
+  <details>
+    <summary>Quanto tempo leva para o dinheiro cair na minha conta?</summary>
+    <p>Pix em 1 dia útil e cartão de crédito em 30 dias, ou em 2 dias úteis com antecipação.</p>
+  </details>
+
+  <details>
+    <summary>Posso testar antes de cobrar de verdade?</summary>
+    <p>Sim. O ambiente de sandbox tem chaves próprias e não movimenta dinheiro real.</p>
+  </details>
+
+  <details>
+    <summary>Existe fidelidade ou multa por cancelamento?</summary>
+    <p>Não. Você pode encerrar a conta a qualquer momento após sacar o saldo.</p>
+  </details>
+
+  <details>
+    <summary>O checkout funciona no celular?</summary>
+    <p>Sim. Todas as telas são responsivas e funcionam em celular, tablet e desktop.</p>
+  </details>
+</section>
+
+<hr>
+
+<section>
+  <h2>Pronto para começar?</h2>
+  <form action="cadastro.html" method="get">
+    <fieldset>
+      <legend>Criar conta grátis</legend>
+      <p>
+        <label for="email-rapido">Seu e-mail corporativo:</label><br>
+        <input type="email" id="email-rapido" name="email" placeholder="voce@suaempresa.com.br" size="32" required>
+      </p>
+      <p><button type="submit">Criar conta</button></p>
+      <p><small>Já tem conta? <a href="login.html">Entrar no painel</a></small></p>
+    </fieldset>
+  </form>
+</section>
+
+</main>
+
+<hr>
+
+<footer>
+  <h2>Doom Pay</h2>
+  <nav>
+    <h3>Produto</h3>
+    <ul>
+      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="#taxas">Taxas</a></li>
+      <li><a href="checkout.html">Checkout</a></li>
+    </ul>
+    <h3>Desenvolvedores</h3>
+    <ul>
+      <li><a href="integracoes.html">Documentação da API</a></li>
+      <li><a href="integracoes.html#webhooks">Webhooks</a></li>
+      <li><a href="integracoes.html#chaves">Chaves e ambientes</a></li>
+    </ul>
+    <h3>Conta</h3>
+    <ul>
+      <li><a href="login.html">Entrar</a></li>
+      <li><a href="cadastro.html">Criar conta</a></li>
+      <li><a href="recuperar-senha.html">Recuperar senha</a></li>
+    </ul>
+  </nav>
+  <address>
+    Suporte: <a href="mailto:suporte@doompay.com.br">suporte@doompay.com.br</a>
+  </address>
+  <p><small>Doom Pay — projeto acadêmico de front-end. Dados e valores são fictícios.</small></p>
+  <p><a href="#topo">Voltar ao topo</a></p>
+</footer>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                          

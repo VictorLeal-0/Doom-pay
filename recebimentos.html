@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recebimentos e saques — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <p>
+    Conta: <strong>Doom Comércio Digital Ltda.</strong> ·
+    <a href="login.html">Sair</a>
+  </p>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <strong>Recebimentos</strong> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Recebimentos e saques</h2>
+
+<h3>Posição atual</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Saldo disponível</th>
+      <th scope="col">A receber (futuro)</th>
+      <th scope="col">Em processamento</th>
+      <th scope="col">Reserva financeira</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>R$ 42.380,00</strong></td>
+      <td>R$ 118.950,00</td>
+      <td>R$ 2.310,00</td>
+      <td>R$ 4.720,00</td>
+    </tr>
+  </tbody>
+</table>
+<p><small>
+  A reserva financeira é um percentual retido por 30 dias para cobrir eventuais
+  estornos e contestações.
+</small></p>
+
+<h3 id="saque">Solicitar saque</h3>
+<form action="recebimentos.html" method="post">
+  <fieldset>
+    <legend>Transferir para a conta bancária</legend>
+    <p>Disponível para saque agora: <strong>R$ 42.380,00</strong></p>
+    <p>
+      <label for="valor">Valor do saque (R$):</label><br>
+      <input type="number" id="valor" name="valor" min="10" max="42380" step="0.01" size="12" placeholder="0,00" required>
+      <br><small>Valor mínimo de R$ 10,00.</small>
+    </p>
+    <p>
+      <label for="conta">Conta de destino:</label><br>
+      <select id="conta" name="conta">
+        <option value="1">341 — Itaú · Ag. 1234 · CC 56789-0 (principal)</option>
+        <option value="2">237 — Bradesco · Ag. 4321 · CC 09876-5</option>
+      </select>
+      <br><small><a href="configuracoes.html#bancos">Gerenciar contas bancárias</a></small>
+    </p>
+    <p>
+      <label for="quando">Quando transferir:</label><br>
+      <input type="radio" id="agora" name="quando" value="agora" checked>
+      <label for="agora">Agora (cai em até 1 hora útil)</label><br>
+      <input type="radio" id="agendar" name="quando" value="agendar">
+      <label for="agendar">Agendar para</label>
+      <input type="date" id="data-agenda" name="data_agenda">
+    </p>
+    <p>
+      <button type="submit">Solicitar saque</button>
+    </p>
+    <p><small>Saques são gratuitos e liberados em dias úteis, das 8h às 17h.</small></p>
+  </fieldset>
+</form>
+
+<h3>Saque automático</h3>
+<form action="recebimentos.html" method="post">
+  <fieldset>
+    <legend>Transferência recorrente</legend>
+    <p>
+      <input type="checkbox" id="auto" name="auto" value="sim">
+      <label for="auto">Transferir o saldo disponível automaticamente</label>
+    </p>
+    <p>
+      <label for="frequencia">Frequência:</label>
+      <select id="frequencia" name="frequencia">
+        <option>Diária</option>
+        <option selected>Semanal (toda segunda-feira)</option>
+        <option>Quinzenal</option>
+        <option>Mensal (todo dia 1)</option>
+      </select>
+    </p>
+    <p>
+      <label for="minimo">Transferir apenas se o saldo for maior que (R$):</label>
+      <input type="number" id="minimo" name="minimo" min="10" step="0.01" size="10" value="500.00">
+    </p>
+    <p><button type="submit">Salvar regra</button></p>
+  </fieldset>
+</form>
+
+<h3>Agenda de recebíveis</h3>
+<table border="1">
+  <caption>Valores aprovados aguardando liberação</caption>
+  <thead>
+    <tr>
+      <th scope="col">Liberação</th>
+      <th scope="col">Origem</th>
+      <th scope="col">Transações</th>
+      <th scope="col">Bruto</th>
+      <th scope="col">Taxas</th>
+      <th scope="col">Líquido</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>03/10/2026</td>
+      <td>Pix</td>
+      <td>42</td>
+      <td>R$ 9.480,00</td>
+      <td>R$ 94,80</td>
+      <td>R$ 9.385,20</td>
+    </tr>
+    <tr>
+      <td>10/10/2026</td>
+      <td>Pix</td>
+      <td>31</td>
+      <td>R$ 6.720,00</td>
+      <td>R$ 67,20</td>
+      <td>R$ 6.652,80</td>
+    </tr>
+    <tr>
+      <td>30/10/2026</td>
+      <td>Crédito — parcela 1</td>
+      <td>118</td>
+      <td>R$ 28.940,00</td>
+      <td>R$ 1.157,60</td>
+      <td>R$ 27.782,40</td>
+    </tr>
+    <tr>
+      <td>30/11/2026</td>
+      <td>Crédito — parcela 2</td>
+      <td>64</td>
+      <td>R$ 21.310,00</td>
+      <td>R$ 852,40</td>
+      <td>R$ 20.457,60</td>
+    </tr>
+    <tr>
+      <td>30/12/2026</td>
+      <td>Crédito — parcela 3</td>
+      <td>49</td>
+      <td>R$ 18.620,00</td>
+      <td>R$ 744,80</td>
+      <td>R$ 17.875,20</td>
+    </tr>
+    <tr>
+      <td>30/01/2027</td>
+      <td>Crédito — parcela 4</td>
+      <td>27</td>
+      <td>R$ 12.080,00</td>
+      <td>R$ 483,20</td>
+      <td>R$ 11.596,80</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row" colspan="3">Total a receber</th>
+      <td>R$ 97.150,00</td>
+      <td>R$ 3.400,00</td>
+      <td><strong>R$ 93.750,00</strong></td>
+    </tr>
+  </tfoot>
+</table>
+
+<h3>Antecipação de recebíveis</h3>
+<form action="recebimentos.html" method="post">
+  <fieldset>
+    <legend>Receber antes do prazo</legend>
+    <p>
+      Você pode antecipar os valores de cartão com taxa de <strong>1,89% ao mês</strong>
+      sobre o período antecipado.
+    </p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th scope="col">Antecipar</th>
+          <th scope="col">Valor disponível</th>
+          <th scope="col">Custo</th>
+          <th scope="col">Você recebe hoje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="radio" id="ant-1" name="antecipar" value="30">
+            <label for="ant-1">Parcelas de 30 dias</label>
+          </td>
+          <td>R$ 27.782,40</td>
+          <td>R$ 525,09</td>
+          <td>R$ 27.257,31</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="ant-2" name="antecipar" value="tudo">
+            <label for="ant-2">Todos os recebíveis de cartão</label>
+          </td>
+          <td>R$ 77.712,00</td>
+          <td>R$ 3.142,18</td>
+          <td>R$ 74.569,82</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><button type="submit">Simular e antecipar</button></p>
+  </fieldset>
+</form>
+
+<h3>Histórico de saques</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Conta de destino</th>
+      <th scope="col">Status</th>
+      <th scope="col">Comprovante</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>28/09/2026</td>
+      <td>R$ 25.000,00</td>
+      <td>341 · CC 56789-0</td>
+      <td>Concluído</td>
+      <td><a href="recebimentos.html?comprovante=1">Baixar</a></td>
+    </tr>
+    <tr>
+      <td>21/09/2026</td>
+      <td>R$ 18.400,00</td>
+      <td>341 · CC 56789-0</td>
+      <td>Concluído</td>
+      <td><a href="recebimentos.html?comprovante=2">Baixar</a></td>
+    </tr>
+    <tr>
+      <td>14/09/2026</td>
+      <td>R$ 31.750,00</td>
+      <td>237 · CC 09876-5</td>
+      <td>Concluído</td>
+      <td><a href="recebimentos.html?comprovante=3">Baixar</a></td>
+    </tr>
+    <tr>
+      <td>07/09/2026</td>
+      <td>R$ 9.200,00</td>
+      <td>341 · CC 56789-0</td>
+      <td>Devolvido pelo banco</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Extrato</h3>
+<form action="recebimentos.html" method="get">
+  <p>
+    <label for="de">De:</label>
+    <input type="date" id="de" name="de" value="2026-09-01">
+    <label for="ate">Até:</label>
+    <input type="date" id="ate" name="ate" value="2026-10-01">
+    <label for="formato">Formato:</label>
+    <select id="formato" name="formato">
+      <option>PDF</option>
+      <option>CSV</option>
+      <option>OFX</option>
+    </select>
+    <button type="submit">Gerar extrato</button>
+  </p>
+</form>
+
+</main>
+
+<hr>
+
+<footer>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+  <p><small>Doom Pay — painel do lojista. Dados de demonstração.</small></p>
+</footer>
+
+</body>
+</html>

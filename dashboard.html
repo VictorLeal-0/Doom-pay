@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <p>
+    Conta: <strong>Doom Comércio Digital Ltda.</strong> ·
+    Ambiente: <strong>Produção</strong> ·
+    <a href="configuracoes.html">Minha conta</a> ·
+    <a href="login.html">Sair</a>
+  </p>
+  <nav>
+    <strong>Dashboard</strong> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Visão geral</h2>
+
+<form action="dashboard.html" method="get">
+  <fieldset>
+    <legend>Período</legend>
+    <p>
+      <label for="periodo">Exibir:</label>
+      <select id="periodo" name="periodo">
+        <option value="hoje">Hoje</option>
+        <option value="7d">Últimos 7 dias</option>
+        <option value="30d" selected>Últimos 30 dias</option>
+        <option value="mes">Mês atual</option>
+        <option value="ano">Ano atual</option>
+      </select>
+      <label for="de">De:</label>
+      <input type="date" id="de" name="de" value="2026-09-01">
+      <label for="ate">Até:</label>
+      <input type="date" id="ate" name="ate" value="2026-10-01">
+      <button type="submit">Aplicar</button>
+    </p>
+  </fieldset>
+</form>
+
+<h3>Saldos</h3>
+<table border="1">
+  <caption>Posição financeira em 01/10/2026</caption>
+  <thead>
+    <tr>
+      <th scope="col">Saldo disponível</th>
+      <th scope="col">A receber</th>
+      <th scope="col">Em processamento</th>
+      <th scope="col">Reserva financeira</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>R$ 42.380,00</strong></td>
+      <td><strong>R$ 118.950,00</strong></td>
+      <td>R$ 2.310,00</td>
+      <td>R$ 4.720,00</td>
+    </tr>
+    <tr>
+      <td><a href="recebimentos.html#saque">Sacar</a></td>
+      <td><a href="recebimentos.html">Ver agenda</a></td>
+      <td><a href="transacoes.html?status=processando">Ver</a></td>
+      <td><small>Liberação em 30 dias</small></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Indicadores do período</h3>
+<table border="1">
+  <caption>Últimos 30 dias, comparado ao período anterior</caption>
+  <thead>
+    <tr>
+      <th scope="col">Indicador</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Período anterior</th>
+      <th scope="col">Variação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Volume transacionado</th>
+      <td>R$ 310.500,00</td>
+      <td>R$ 274.180,00</td>
+      <td>+13,2%</td>
+    </tr>
+    <tr>
+      <th scope="row">Transações aprovadas</th>
+      <td>1.284</td>
+      <td>1.141</td>
+      <td>+12,5%</td>
+    </tr>
+    <tr>
+      <th scope="row">Ticket médio</th>
+      <td>R$ 241,82</td>
+      <td>R$ 240,30</td>
+      <td>+0,6%</td>
+    </tr>
+    <tr>
+      <th scope="row">Taxas pagas</th>
+      <td>R$ 9.420,00</td>
+      <td>R$ 8.610,00</td>
+      <td>+9,4%</td>
+    </tr>
+    <tr>
+      <th scope="row">Estornos</th>
+      <td>R$ 3.980,00</td>
+      <td>R$ 5.140,00</td>
+      <td>-22,6%</td>
+    </tr>
+    <tr>
+      <th scope="row">Chargebacks</th>
+      <td>2</td>
+      <td>4</td>
+      <td>-50,0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Aprovação e recusa</h3>
+<table border="1">
+  <caption>Resultado das tentativas de pagamento</caption>
+  <thead>
+    <tr>
+      <th scope="col">Situação</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Percentual</th>
+      <th scope="col">Representação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Aprovadas</th>
+      <td>1.284</td>
+      <td>93,4%</td>
+      <td><meter value="93.4" min="0" max="100" low="80" high="92" optimum="100">93,4%</meter></td>
+    </tr>
+    <tr>
+      <th scope="row">Recusadas</th>
+      <td>91</td>
+      <td>6,6%</td>
+      <td><meter value="6.6" min="0" max="100">6,6%</meter></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Total de tentativas</th>
+      <td>1.375</td>
+      <td>100%</td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+<h4>Principais motivos de recusa</h4>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Motivo</th>
+      <th scope="col">Ocorrências</th>
+      <th scope="col">O que fazer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Saldo ou limite insuficiente</td>
+      <td>38</td>
+      <td>Sugerir parcelamento ou Pix</td>
+    </tr>
+    <tr>
+      <td>Dados do cartão incorretos</td>
+      <td>24</td>
+      <td>Pedir revisão de número e CVV</td>
+    </tr>
+    <tr>
+      <td>Recusa do emissor</td>
+      <td>17</td>
+      <td>Cliente deve contatar o banco</td>
+    </tr>
+    <tr>
+      <td>Suspeita de fraude (antifraude)</td>
+      <td>12</td>
+      <td>Revisar manualmente no detalhe</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Volume por método de pagamento</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Método</th>
+      <th scope="col">Transações</th>
+      <th scope="col">Volume</th>
+      <th scope="col">Participação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Pix</th>
+      <td>742</td>
+      <td>R$ 164.565,00</td>
+      <td><meter value="53" min="0" max="100">53%</meter> 53%</td>
+    </tr>
+    <tr>
+      <th scope="row">Crédito à vista</th>
+      <td>389</td>
+      <td>R$ 96.255,00</td>
+      <td><meter value="31" min="0" max="100">31%</meter> 31%</td>
+    </tr>
+    <tr>
+      <th scope="row">Crédito parcelado</th>
+      <td>153</td>
+      <td>R$ 49.680,00</td>
+      <td><meter value="16" min="0" max="100">16%</meter> 16%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Volume diário (últimos 7 dias)</h3>
+<table border="1">
+  <caption>Cada barra representa o volume aprovado no dia</caption>
+  <thead>
+    <tr>
+      <th scope="col">Dia</th>
+      <th scope="col">Volume</th>
+      <th scope="col">Comparativo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>25/09</td><td>R$ 8.240,00</td>
+      <td><meter value="8240" min="0" max="16000">8.240</meter></td>
+    </tr>
+    <tr>
+      <td>26/09</td><td>R$ 11.730,00</td>
+      <td><meter value="11730" min="0" max="16000">11.730</meter></td>
+    </tr>
+    <tr>
+      <td>27/09</td><td>R$ 6.180,00</td>
+      <td><meter value="6180" min="0" max="16000">6.180</meter></td>
+    </tr>
+    <tr>
+      <td>28/09</td><td>R$ 5.940,00</td>
+      <td><meter value="5940" min="0" max="16000">5.940</meter></td>
+    </tr>
+    <tr>
+      <td>29/09</td><td>R$ 13.410,00</td>
+      <td><meter value="13410" min="0" max="16000">13.410</meter></td>
+    </tr>
+    <tr>
+      <td>30/09</td><td>R$ 15.280,00</td>
+      <td><meter value="15280" min="0" max="16000">15.280</meter></td>
+    </tr>
+    <tr>
+      <td>01/10</td><td>R$ 9.860,00</td>
+      <td><meter value="9860" min="0" max="16000">9.860</meter></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Últimas transações</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Data</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Método</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="transacao-detalhe.html">TRX-100245</a></td>
+      <td>01/10/2026 14:32</td>
+      <td>Ana Ribeiro</td>
+      <td>Crédito 1x</td>
+      <td>R$ 249,90</td>
+      <td>Aprovado</td>
+    </tr>
+    <tr>
+      <td><a href="transacao-detalhe.html">TRX-100244</a></td>
+      <td>01/10/2026 13:05</td>
+      <td>Lojas Horizonte Ltda.</td>
+      <td>Pix</td>
+      <td>R$ 1.780,00</td>
+      <td>Aprovado</td>
+    </tr>
+    <tr>
+      <td><a href="transacao-detalhe.html">TRX-100243</a></td>
+      <td>30/09/2026 19:47</td>
+      <td>Marcos Teixeira</td>
+      <td>Crédito 1x</td>
+      <td>R$ 89,00</td>
+      <td>Recusado</td>
+    </tr>
+    <tr>
+      <td><a href="transacao-detalhe.html">TRX-100242</a></td>
+      <td>30/09/2026 18:12</td>
+      <td>Camila Duarte</td>
+      <td>Pix</td>
+      <td>R$ 540,00</td>
+      <td>Em processamento</td>
+    </tr>
+    <tr>
+      <td><a href="transacao-detalhe.html">TRX-100241</a></td>
+      <td>29/09/2026 10:21</td>
+      <td>Estúdio Nórdico ME</td>
+      <td>Crédito 3x</td>
+      <td>R$ 3.200,00</td>
+      <td>Estornado</td>
+    </tr>
+  </tbody>
+</table>
+<p><a href="transacoes.html">Ver todas as transações</a></p>
+
+<h3>Avisos</h3>
+<ul>
+  <li>Sua chave de produção foi gerada há 92 dias.
+      <a href="integracoes.html#chaves">Considere rotacioná-la</a>.</li>
+  <li>2 chargebacks aguardam envio de defesa até 05/10/2026.
+      <a href="transacoes.html?status=chargeback">Ver casos</a>.</li>
+  <li>Verificação em duas etapas desativada.
+      <a href="configuracoes.html#seguranca">Ativar agora</a>.</li>
+</ul>
+
+</main>
+
+<hr>
+
+<footer>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+  <p><small>Doom Pay — painel do lojista. Dados de demonstração.</small></p>
+</footer>
+
+</body>
+</html>

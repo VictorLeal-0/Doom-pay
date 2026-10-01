@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuperar senha — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <p>Recuperação de acesso</p>
+</header>
+
+<hr>
+
+<main>
+  <h2>Esqueceu sua senha?</h2>
+  <p>
+    Informe o e-mail cadastrado. Enviaremos um link de redefinição válido por 30
+    minutos.
+  </p>
+
+  <form action="login.html" method="post">
+    <fieldset>
+      <legend>Enviar link de redefinição</legend>
+      <p>
+        <label for="email">E-mail cadastrado:</label><br>
+        <input type="email" id="email" name="email" size="32" required>
+      </p>
+      <p><button type="submit">Enviar link</button></p>
+    </fieldset>
+  </form>
+
+  <hr>
+
+  <h3>Não recebeu o e-mail?</h3>
+  <ul>
+    <li>Verifique a caixa de spam ou lixo eletrônico.</li>
+    <li>Confirme se o endereço digitado é o mesmo do cadastro.</li>
+    <li>Aguarde 5 minutos antes de solicitar um novo envio.</li>
+    <li>Se o problema continuar, fale com
+      <a href="mailto:suporte@doompay.com.br">suporte@doompay.com.br</a>.</li>
+  </ul>
+
+  <hr>
+
+  <h3>Perdeu o acesso ao e-mail e à verificação em duas etapas?</h3>
+  <p>
+    Nesse caso é necessária a validação manual do titular da conta. Envie uma
+    solicitação com o CNPJ ou CPF cadastrado e um documento com foto.
+  </p>
+
+  <form action="recuperar-senha.html" method="post">
+    <fieldset>
+      <legend>Solicitar validação manual</legend>
+      <p>
+        <label for="documento">CNPJ ou CPF da conta:</label><br>
+        <input type="text" id="documento" name="documento" size="24" required>
+      </p>
+      <p>
+        <label for="contato">E-mail para contato:</label><br>
+        <input type="email" id="contato" name="contato" size="32" required>
+      </p>
+      <p>
+        <label for="anexo">Documento com foto:</label><br>
+        <input type="file" id="anexo" name="anexo" accept="image/*,.pdf">
+      </p>
+      <p>
+        <label for="detalhes">Descreva o ocorrido:</label><br>
+        <textarea id="detalhes" name="detalhes" rows="4" cols="50"></textarea>
+      </p>
+      <p><button type="submit">Enviar solicitação</button></p>
+    </fieldset>
+  </form>
+
+  <p><a href="login.html">Voltar para o login</a></p>
+</main>
+
+<hr>
+
+<footer>
+  <p><small>Por segurança, links de redefinição expiram em 30 minutos e só podem ser usados uma vez.</small></p>
+  <p><a href="index.html">Voltar ao site</a></p>
+</footer>
+
+</body>
+</html>

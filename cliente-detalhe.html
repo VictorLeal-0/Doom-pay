@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Ribeiro — Clientes — Doom Pay</title>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html">Doom Pay</a></h1>
+  <nav>
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="transacoes.html">Transações</a> |
+    <a href="clientes.html">Clientes</a> |
+    <a href="recebimentos.html">Recebimentos</a> |
+    <a href="integracoes.html">Integrações</a> |
+    <a href="configuracoes.html">Configurações</a>
+  </nav>
+  <p><a href="clientes.html">&larr; Voltar para clientes</a></p>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Ana Ribeiro</h2>
+<p>Cliente desde 14/03/2025 · <code>CUS-00417</code></p>
+
+<h3>Dados cadastrais</h3>
+<table border="1">
+  <tbody>
+    <tr><th scope="row">Nome</th><td>Ana Ribeiro</td></tr>
+    <tr><th scope="row">CPF</th><td>***.456.789-**</td></tr>
+    <tr><th scope="row">E-mail</th><td>ana.ribeiro@exemplo.com</td></tr>
+    <tr><th scope="row">Telefone</th><td>(11) 9****-1234</td></tr>
+    <tr><th scope="row">Endereço</th><td>Rua das Acácias, 120 — Pinheiros — São Paulo/SP</td></tr>
+  </tbody>
+</table>
+
+<h3>Resumo financeiro</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Compras</th>
+      <th scope="col">Total gasto</th>
+      <th scope="col">Ticket médio</th>
+      <th scope="col">Estornos</th>
+      <th scope="col">Chargebacks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12</td>
+      <td>R$ 3.120,40</td>
+      <td>R$ 260,03</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Método preferido</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <th scope="row">Cartão de crédito</th>
+      <td><meter value="75" min="0" max="100">75%</meter> 9 compras</td>
+    </tr>
+    <tr>
+      <th scope="row">Pix</th>
+      <td><meter value="25" min="0" max="100">25%</meter> 3 compras</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Histórico de compras</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">ID</th>
+      <th scope="col">Método</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Status</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>01/10/2026</td>
+      <td>TRX-100245</td>
+      <td>Crédito 1x</td>
+      <td>R$ 249,90</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>02/09/2026</td>
+      <td>TRX-099871</td>
+      <td>Crédito 1x</td>
+      <td>R$ 249,90</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>02/08/2026</td>
+      <td>TRX-099104</td>
+      <td>Pix</td>
+      <td>R$ 199,90</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>02/07/2026</td>
+      <td>TRX-098420</td>
+      <td>Crédito 1x</td>
+      <td>R$ 199,90</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>15/06/2026</td>
+      <td>TRX-097988</td>
+      <td>Crédito 2x</td>
+      <td>R$ 480,00</td>
+      <td>Estornado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+    <tr>
+      <td>02/06/2026</td>
+      <td>TRX-097655</td>
+      <td>Pix</td>
+      <td>R$ 199,90</td>
+      <td>Aprovado</td>
+      <td><a href="transacao-detalhe.html">Detalhes</a></td>
+    </tr>
+  </tbody>
+</table>
+<p><a href="transacoes.html?cliente=CUS-00417">Ver todas as 12 transações</a></p>
+
+<h3>Cartões salvos</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">Bandeira</th>
+      <th scope="col">Final</th>
+      <th scope="col">Validade</th>
+      <th scope="col">Token</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Visa</td>
+      <td>4821</td>
+      <td>09/2029</td>
+      <td><code>tok_1a2b3c4d5e</code></td>
+      <td><a href="cliente-detalhe.html?remover=1">Remover</a></td>
+    </tr>
+    <tr>
+      <td>Mastercard</td>
+      <td>7730</td>
+      <td>02/2028</td>
+      <td><code>tok_9f8e7d6c5b</code></td>
+      <td><a href="cliente-detalhe.html?remover=2">Remover</a></td>
+    </tr>
+  </tbody>
+</table>
+<p><small>
+  Apenas os tokens são guardados. O número completo do cartão nunca fica armazenado
+  no Doom Pay nem no seu sistema.
+</small></p>
+
+<h3>Ações</h3>
+<form action="cliente-detalhe.html" method="post">
+  <fieldset>
+    <legend>Cobrança avulsa</legend>
+    <p>
+      <label for="valor">Valor (R$):</label>
+      <input type="number" id="valor" name="valor" min="1" step="0.01" size="10" required>
+    </p>
+    <p>
+      <label for="descricao">Descrição que aparece na fatura:</label><br>
+      <input type="text" id="descricao" name="descricao" size="40" maxlength="22">
+    </p>
+    <p>
+      <label for="metodo">Método:</label>
+      <select id="metodo" name="metodo">
+        <option value="link">Enviar link de pagamento por e-mail</option>
+        <option value="cartao">Cobrar no cartão salvo final 4821</option>
+        <option value="pix">Gerar cobrança Pix</option>
+      </select>
+    </p>
+    <p><button type="submit">Criar cobrança</button></p>
+  </fieldset>
+</form>
+
+<form action="cliente-detalhe.html" method="post">
+  <fieldset>
+    <legend>Editar cadastro</legend>
+    <p>
+      <label for="novo-email">E-mail:</label><br>
+      <input type="email" id="novo-email" name="email" size="32" value="ana.ribeiro@exemplo.com">
+    </p>
+    <p>
+      <label for="novo-tel">Telefone:</label><br>
+      <input type="tel" id="novo-tel" name="telefone" size="20" value="(11) 99999-1234">
+    </p>
+    <p>
+      <label for="obs">Observações internas:</label><br>
+      <textarea id="obs" name="obs" rows="3" cols="50">Cliente recorrente do plano Pro.</textarea>
+    </p>
+    <p>
+      <button type="submit">Salvar alterações</button>
+      <button type="submit" name="acao" value="bloquear">Bloquear cliente</button>
+    </p>
+  </fieldset>
+</form>
+
+</main>
+
+<hr>
+
+<footer>
+  <p><a href="clientes.html">&larr; Voltar para clientes</a></p>
+  <p><small>Doom Pay — painel do lojista. Dados de demonstração.</small></p>
+</footer>
+
+</body>
+</html>

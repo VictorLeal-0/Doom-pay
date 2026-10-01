@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento em processamento — DOOMSHOP</title>
+</head>
+<body>
+
+<header>
+  <h1>DOOMSHOP</h1>
+  <p>Pagamento processado por <strong>Doom Pay</strong></p>
+</header>
+
+<hr>
+
+<main>
+
+<h2>Estamos confirmando seu pagamento</h2>
+<p>
+  Recebemos a sua solicitação de pagamento de <strong>R$ 540,00</strong> referente ao
+  pedido #8843. A confirmação do banco costuma levar alguns instantes, mas pode
+  demorar até 1 hora útil em casos raros.
+</p>
+<p><strong>Você não precisa pagar de novo.</strong> Avisaremos por e-mail assim que
+o pagamento for confirmado.</p>
+
+<p><progress max="3" value="2">Etapa 2 de 3</progress> Aguardando confirmação</p>
+
+<h3>Andamento</h3>
+<ol>
+  <li><strong>Solicitação recebida</strong> — 30/09/2026 às 18:12 · concluído</li>
+  <li><strong>Confirmação do banco</strong> — em andamento</li>
+  <li>Liberação do pedido — aguardando</li>
+</ol>
+
+<h3>Dados da transação</h3>
+<table border="1">
+  <tbody>
+    <tr><th scope="row">Pedido</th><td>#8843</td></tr>
+    <tr><th scope="row">Código da transação</th><td><code>TRX-100242</code></td></tr>
+    <tr><th scope="row">Método</th><td>Pix</td></tr>
+    <tr><th scope="row">Valor</th><td><strong>R$ 540,00</strong></td></tr>
+    <tr><th scope="row">Solicitado em</th><td>30/09/2026 às 18:12</td></tr>
+    <tr><th scope="row">Status</th><td>Em processamento</td></tr>
+  </tbody>
+</table>
+
+<h3>Acompanhar</h3>
+<p>
+  <a href="pagamento-processando.html">Atualizar status</a> ·
+  <a href="pagamento-aprovado.html">Ver tela de pagamento aprovado</a> ·
+  <a href="index.html">Voltar para a loja</a>
+</p>
+<p><small>
+  Nesta demonstração a página não atualiza sozinha. Em produção, o status muda
+  automaticamente quando o webhook de confirmação é recebido.
+</small></p>
+
+<h3>Consultar depois</h3>
+<form action="pagamento-processando.html" method="get">
+  <fieldset>
+    <legend>Receber aviso quando confirmar</legend>
+    <p>
+      <label for="email">Seu e-mail:</label><br>
+      <input type="email" id="email" name="email" size="32" value="camila.d@exemplo.com">
+    </p>
+    <p>
+      <input type="checkbox" id="sms" name="sms" value="sim">
+      <label for="sms">Avisar também por SMS</label>
+    </p>
+    <p><button type="submit">Salvar aviso</button></p>
+  </fieldset>
+</form>
+
+<hr>
+
+<h3>Por que um pagamento fica em processamento?</h3>
+<dl>
+  <dt>Pix fora do horário bancário</dt>
+  <dd>Transferências feitas na madrugada podem demorar um pouco mais para compensar.</dd>
+
+  <dt>Análise antifraude manual</dt>
+  <dd>Compras de valor alto ou com padrão incomum passam por revisão humana.</dd>
+
+  <dt>Instabilidade no banco emissor</dt>
+  <dd>Quando o banco demora a responder, reenviamos a consulta automaticamente.</dd>
+</dl>
+
+<p><small>
+  Se o pagamento não for confirmado em 24 horas, ele é cancelado automaticamente e
+  nenhum valor é cobrado.
+</small></p>
+
+</main>
+
+<hr>
+
+<footer>
+  <p><strong>Pagamento seguro Doom Pay</strong></p>
+  <p><small>Ambiente de demonstração. Nenhuma cobrança real foi feita.</small></p>
+  <p>
+    <a href="checkout.html">Voltar ao checkout</a> ·
+    <a href="index.html">Sobre o Doom Pay</a>
+  </p>
+</footer>
+
+</body>
+</html>
